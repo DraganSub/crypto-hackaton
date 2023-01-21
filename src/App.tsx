@@ -9,11 +9,10 @@ function App() {
         <div className="App">
             <Router>
                 <Routes>
-                    <Route path="/" element={<AllCoins />} />
+                    <Route path="/" element={<MainLayout />} />
                     <Route path="/coins/:id" element={<CoinDetailsPage />} />
                 </Routes>
             </Router>
-            <MainLayout />
         </div>
     );
 }
