@@ -3,6 +3,7 @@ import { Menu } from "antd";
 import Avatar from "antd/es/avatar/avatar";
 import { HomeOutlined, LineChartOutlined, BulbOutlined } from "@ant-design/icons"
 import classNames from "classnames";
+import { Link } from "react-router-dom";
 
 export default function SideBar() {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(true);
@@ -40,17 +41,17 @@ export default function SideBar() {
             {
               key: "1",
               icon: <HomeOutlined />,
-              label: "Home",
+              label: <Link to="/">Home</Link>,
             },
             {
               key: "2",
               icon: <LineChartOutlined />,
-              label: "Cryptocurrencies"
+              label: <Link to="/Cryptocurrencies">Cryptocurrencies</Link>
             },
             {
               key: "3",
               icon: <BulbOutlined />,
-              label: "News"
+              label: <Link to="/News">News</Link>
             }
           ]}
         />
