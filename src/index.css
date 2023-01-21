@@ -1,3 +1,11 @@
+:root{
+  --main-sidebar-color:#fff;
+  --sidemenu-active-color:rgb(0,165,154);
+  --secondary-font-color:rgb(0,165,154);
+  --label-secondary-font-color: rgba(0,0,0,.45);
+  --label-primary-font-color:rgba(0,0,0,.85);
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -11,3 +19,309 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.sidebar{
+  position: fixed;
+  left: 0;
+  margin: 10px;
+  height: 100vh;
+  margin: 0px;
+  width:max-content;
+  background-color: var(--main-sidebar-color);
+}
+
+
+
+.avatar__logo{
+  display: flex;
+  justify-content:space-evenly;
+  min-width: 257px;
+  width: fit-content;
+  align-items: center;
+  padding: 0px 0px;
+}
+
+
+.avatar__logo > h2{
+  font-weight: 500;
+  font-size: 25px;
+}
+
+.hero-title{
+  font-size: 30px;
+  font-weight: 500;
+  padding:20px;
+  padding-left: 30px;
+  padding-bottom: 10px;
+}
+.sidebar__menu{
+  padding-top: 30px;
+}
+
+.ant-menu-light .ant-menu-item-selected{
+  background-color: var(--sidemenu-active-color);
+  border-radius: 0px ;
+}
+
+.ant-menu-title-content, .ant-menu-item-icon{
+  color: black;
+}
+.ant-menu-item{
+  border-radius: none;
+}
+
+.hamburger-menu{
+  display: none;
+}
+
+.collaped, .open{
+  display: block;
+}
+
+.main-content{
+  position: relative;
+  margin-left: 253px;
+  min-height: 98vh;
+}
+
+
+/************* HOMEPAGE *************/
+.hero_info_container{
+  display: flex;
+  flex-wrap:wrap;
+}
+.hero__total{
+  width: 100%;
+}
+.hero_info_container > div {
+  flex: 50%;
+}
+
+.hero__label{
+  color:var(--label-secondary-font-color);
+  font-size: 14px;
+  margin-bottom: 4px;
+  padding: 4px 0px 0px 30px;
+}
+
+.hero__data{
+  color:var(--label-primary-font-color);
+  font-size: 24px;
+  padding-left: 30px;
+}
+
+.crypto-currency {
+  padding: 0px 30px;
+  margin-top: 40px;
+}
+
+.crypto-news{
+  padding: 0px 30px;
+  margin-top: 10px;
+}
+
+.crypto_news-card{
+  max-width: 450px;
+  min-width: 250px;
+  width: max-content;
+}
+
+
+.crypto__card__title{
+  display: flex;
+  font-size: 16px;
+}
+
+.crypto__grid{
+display: grid;
+grid-gap: 30px;
+grid-template-columns: repeat(auto-fit,260px);
+}
+
+.crypto__grid__lg{
+  display: grid;
+grid-gap: 30px;
+grid-template-columns: repeat(auto-fit,450px);
+}
+
+.crypto__title-group{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding:0px 10px 0px 10px;
+}
+
+.news-info{
+  display: flex;
+  justify-content: space-between;
+}
+
+.crypto-currency__title, .crypto-news__title{
+  font-size:30px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.show-more-btn{
+  color:var(--secondary-font-color);
+  font-weight: 600;
+  font-size: 1.4rem;
+  padding: 0px 10px 0px 10px;
+  
+}
+
+.show-more-btn > span{
+  overflow-wrap: break-word;
+}
+
+.crypto__img{
+  width: 30px;
+}
+
+.crypto__card{
+  display: flex;
+  gap: 10px;
+  line-height: 2.1;
+}
+
+
+
+
+/*********  FOOTER  **********/
+.main-footer{
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  margin-top: 50px;
+}
+
+.footer-credits{
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  text-align: center;
+  padding:0;
+  line-height: 0px;
+}
+
+.footer-nav{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  color: var(--sidemenu-active-color);
+  margin-bottom: 20px;
+  padding-top: 10px;
+}
+.footer-nav > a{
+  color: var(--secondary-font-color);
+
+}
+/* region media queries  */
+
+@media screen and (max-width:500px) {
+  .crypto_news-card{
+    width: 250px;
+  }
+  .crypto__news__img{
+    width:70px;
+    aspect-ratio: 1;
+  }
+  .crypto-currency__title{
+    font-size: 25px;
+  }
+}
+  
+@media screen and (max-width: 800px) {
+  .sidebar{
+    display: flex;
+    height: fit-content;
+    padding-bottom: 20px;
+    justify-items: center;
+    z-index: 1000;
+    margin: 0px;
+    width:100%;
+    background-color: var(--main-sidebar-color);
+  }
+  .app-main{
+    position: relative;
+  }
+
+  .main-content{
+    margin-top: 94.5px;
+    z-index: 5;
+    margin-left: 0;
+  }
+  .avatar__logo{
+    width: 50%;
+    justify-content: unset;
+    margin: 0 0 0 20px;
+  }
+
+  .avatar__logo > img{
+left: 20px;
+  }
+
+  .avatar__logo > h2{
+    padding-left: 15px;
+  }
+
+  .sidebar__menu{
+    width: 50%;
+    align-items: center;
+    position: relative;
+  }
+
+  .hamburger-menu{
+    display: block;
+  
+    color: black;
+    float: right;
+    padding-right: 20px;
+  
+  }
+
+  .icon__24{
+    font-size: 24px;
+    z-index: 1000;
+  }
+
+
+  .side-menu{
+    position: absolute;
+    z-index: 10;
+    top: 90px;
+    right: 0;
+    right: 20;
+    min-width: 170px;
+    max-width: 170px;
+  }
+
+  .collapsed{
+    display: none;
+  }
+
+  .open{
+    display: block;
+  }
+
+  .ant-menu-root {
+    width: 150px;
+  }
+}
+
+@media screen and (min-width:1500px){
+  .sidebar{
+    width: 300px;
+  }
+
+  .main-content{
+    margin-left:300px;
+  }
+
+  .ant-menu{
+    max-width: 250px;
+  }
+}
+
+/* endregion media queries */
