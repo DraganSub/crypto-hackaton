@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-
+//ako crkne email
+//https://www.emailnator.com/inbox/pjxwfwl@femailtor.com/MTg1ZDRlYjQyMzlmMzAwZg==
 const URL = "https://coinranking1.p.rapidapi.com/";
 const options = {
     "x-rapidapi-key": process.env.REACT_APP_RAPIDAPI_KEY,
@@ -7,6 +8,7 @@ const options = {
 };
 type coin = {
     name: string;
+    uuid: string;
 };
 
 type coins = {
@@ -21,14 +23,30 @@ export const coinApi = createApi({
     endpoints: (build) => ({
         getCoins: build.query<coins, string>({
             query: () => ({
-                url: `coins?referenceCurrencyUuid=yhjMzLPhuIDl&timePeriod=24h&tiers%5B0%5D=1&orderBy=marketCap&orderDirection=desc&limit=50&offset=0`,
+                url: `coins?orderBy=marketCap&orderDirection=desc&limit=100&offset=0`,
                 headers: options,
             }),
             transformResponse: (response: { data: coins }) => {
                 return response.data;
             },
         }),
+        getCoin: build.query<coin, string>({
+            query: (id: string) => ({
+                url: `coin/${id}`,
+                headers: options,
+            }),
+            transformResponse: (response: { data: { coin: coin } }) => {
+                return response.data.coin;
+            },
+        }),
+        getCoinHistory: build.query<coin, { id: string; period: string }>({
+            query: ({ id, period }) => ({
+                url: `coin/${id}/history?timePeriod=${period}`,
+                headers: options,
+            }),
+        }),
     }),
 });
 
-export const { useGetCoinsQuery } = coinApi;
+export const { useGetCoinsQuery, useGetCoinQuery, useGetCoinHistoryQuery } =
+    coinApi;
