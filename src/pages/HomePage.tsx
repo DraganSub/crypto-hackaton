@@ -1,6 +1,5 @@
-import { Button } from "antd";
 import Card from "antd/es/card/Card";
-import React from "react";
+import { Link } from "react-router-dom";
 
 export default function HomePage() {
   return (
@@ -33,7 +32,7 @@ export default function HomePage() {
       <section className="crypto-currency">
         <div className="crypto__title-group">
           <h2 className="crypto-currency__title">Top 10 Cryptocurrencies</h2>
-          <a className="show-more-btn">Show more</a>
+          <Link to="/Cryptocurrencies" className="show-more-btn">Show more</Link>
         </div>
         <div className="crypto__grid">
           <Card title="1. Bitcoin" extra={<CryptoImg />} >
@@ -204,7 +203,7 @@ export default function HomePage() {
       <section className="crypto-news">
         <div className="crypto__title-group">
           <h2 className="crypto-news__title">Latest Crypto News</h2>
-          <a className="show-more-btn">Show more</a>
+          <Link to="/News" className="show-more-btn">Show more</Link>
         </div>
         <div className="crypto__grid__lg">
           <Card className="crypto_news-card">

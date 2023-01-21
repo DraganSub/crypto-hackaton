@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -9,10 +10,10 @@ export default function Footer() {
       </div>
       <div className="footer-nav">
         {/* TODO: add links */}
-        <a href="/">Home</a>
-        <a href="/cryptocurrencies">Cryptocurrencies</a>
-        <a href="/news">News</a>
-        <a href="/github">Github</a>
+        <Link to="/">Home</Link>
+        <Link to="/cryptocurrencies">Cryptocurrencies</Link>
+        <Link to="/news">News</Link>
+        <Link to="/github">Github</Link>
       </div>
     </>
   )
