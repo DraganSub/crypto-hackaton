@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { coin, coins } from "../types";
 //ako crkne email
 //https://www.emailnator.com/inbox/pjxwfwl@femailtor.com/MTg1ZDRlYjQyMzlmMzAwZg==
 const URL = "https://coinranking1.p.rapidapi.com/";
@@ -6,17 +7,7 @@ const options = {
     "x-rapidapi-key": process.env.REACT_APP_RAPIDAPI_KEY,
     "x-rapidapi-host": process.env.REACT_APP_CRYPTO_RAPIDAPI_HOST,
 };
-type coin = {
-    name: string;
-    uuid: string;
-};
 
-type coins = {
-    coins: coin[];
-    stats: {
-        total: number;
-    };
-};
 export const coinApi = createApi({
     reducerPath: "coinApi",
     baseQuery: fetchBaseQuery({ baseUrl: URL }),
