@@ -1,22 +1,17 @@
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import "./App.css";
-import { useGetCoinsQuery } from "./services";
+import { AllCoins } from "./components";
+import { CoinDetailsPage } from "./pages";
 
 function App() {
-    const { data, isLoading, error } = useGetCoinsQuery("");
-
     return (
         <div className="App">
-            {error ? (
-                <>{error}</>
-            ) : isLoading ? (
-                <>Loading...</>
-            ) : data ? (
-                <>
-                    {data.coins.map((val) => (
-                        <p key={val.name}>{val.name}</p>
-                    ))}
-                </>
-            ) : null}
+            <Router>
+                <Routes>
+                    <Route path="/" element={<AllCoins />} />
+                    <Route path="/coins/:id" element={<CoinDetailsPage />} />
+                </Routes>
+            </Router>
         </div>
     );
 }
