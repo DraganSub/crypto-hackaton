@@ -116,9 +116,19 @@ code {
   margin-top: 40px;
 }
 
+.bottom_margin_150{
+  margin-bottom: 150px;
+}
+
+.link__no-style {
+  text-decoration: none;
+  color: black;
+}
+
 .crypto-news{
   padding: 0px 30px;
   margin-top: 10px;
+  margin-bottom: 150px;
 }
 
 .crypto_news-card{
@@ -135,6 +145,7 @@ code {
 
 .crypto__grid{
 display: grid;
+justify-content: center;
 grid-gap: 30px;
 grid-template-columns: repeat(auto-fit,260px);
 }
@@ -185,12 +196,24 @@ grid-template-columns: repeat(auto-fit,450px);
   line-height: 2.1;
 }
 
+/******** Cryptocurrency page **********/
+
+.crypto__search{
+  display: flex;
+  padding: 20px 20px 30px 20px ;
+  justify-content: center;
+}
+.search__input{
+  border-radius: 0px;
+  max-width: 200px;
+}
+
 
 
 
 /*********  FOOTER  **********/
 .main-footer{
-  position: relative;
+  position: absolute;
   bottom: 0;
   width: 100%;
   margin-top: 50px;
