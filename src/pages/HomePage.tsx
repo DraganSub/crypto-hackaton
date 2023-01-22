@@ -26,7 +26,9 @@ export default function HomePage() {
                         </h2>
                         <a className="show-more-btn">Show more</a>
                     </div>
-                    <div className="crypto__grid__lg">{<NewsList />}</div>
+                    <div className="crypto__grid__lg">
+                        {<NewsList limit="7" />}
+                    </div>
                 </section>
             </section>
         </div>

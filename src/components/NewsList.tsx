@@ -2,8 +2,17 @@ import { Card } from "antd";
 import { useGetNewsQuery } from "../services";
 import { news } from "../types";
 
-export default function NewsList() {
-    const { data, isLoading, error } = useGetNewsQuery("7");
+export default function NewsList({
+    theme,
+    limit,
+}: {
+    theme?: string;
+    limit: string;
+}) {
+    const { data, isLoading, error } = useGetNewsQuery({
+        theme: theme ? theme : "cryptocurrency",
+        limit: limit ? limit : "7",
+    });
     if (error) return <p>error</p>;
     if (isLoading) return <p>loading...</p>;
     if (!data || !data.value) return null;

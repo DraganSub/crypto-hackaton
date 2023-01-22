@@ -11,7 +11,10 @@ export const newsApi = createApi({
     reducerPath: "newsApi",
     baseQuery: fetchBaseQuery({ baseUrl: url }),
     endpoints: (build) => ({
-        getNews: build.query<{ value: news[] }, string>({
+        getNews: build.query<
+            { value: news[] },
+            { theme: string; limit: string }
+        >({
             query: (limit) => ({
                 url: `/search?q=cryptocurrency&safeSearch=Off&textFormat=Raw&freshness=Day&count=${limit}`,
                 headers: options,

@@ -1,2 +1,2 @@
 export * from "./CoinService";
-export * from "./NewService";
+export * from "./NewsService";

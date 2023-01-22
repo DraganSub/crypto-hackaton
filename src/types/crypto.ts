@@ -20,3 +20,11 @@ export type stats = {
     totalMarketCap: string;
     total24hVolume: string;
 };
+export type change = {
+    price: number;
+    timestamp: number;
+};
+export type priceHistory = {
+    change: number;
+    history: change[];
+};

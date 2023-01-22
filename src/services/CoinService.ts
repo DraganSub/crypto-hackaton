@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { coin, coins, stats } from "../types";
+import { response } from "express";
+import { coin, coins, priceHistory, stats } from "../types";
 //ako crkne email
 //https://www.emailnator.com/inbox/pjxwfwl@femailtor.com/MTg1ZDRlYjQyMzlmMzAwZg==
 const URL = "https://coinranking1.p.rapidapi.com/";
@@ -30,11 +31,17 @@ export const coinApi = createApi({
                 return response.data.coin;
             },
         }),
-        getCoinHistory: build.query<coin, { id: string; period: string }>({
+        getCoinHistory: build.query<
+            priceHistory,
+            { id: string; period: string }
+        >({
             query: ({ id, period }) => ({
                 url: `coin/${id}/history?timePeriod=${period}`,
                 headers: options,
             }),
+            transformResponse: (response: { data: priceHistory }) => {
+                return response.data;
+            },
         }),
         getCoinStats: build.query<stats, null>({
             query: () => ({
