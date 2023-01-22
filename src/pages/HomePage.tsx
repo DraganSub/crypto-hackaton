@@ -15,6 +15,17 @@ export default function HomePage() {
                         </div>
                         <div className="hero__data">22,988</div>
                     </div>
+    return (
+        <div className="homepage">
+            <section className="hero_section">
+                <h2 className="hero-title">Global Crypto Stats</h2>
+                <div className="hero_info_container">
+                    <div className="hero__total">
+                        <div className="hero__label">
+                            Total Cryptocurrencies
+                        </div>
+                        <div className="hero__data">22,988</div>
+                    </div>
 
                     <div className="hero__total">
                         <div className="hero__label">Total Exchanges</div>
@@ -31,7 +42,7 @@ export default function HomePage() {
                         <div className="hero__data">79B</div>
                     </div>
                 </div>
-            </section>
+
 
             <section className="crypto-currency">
                 <div className="crypto__title-group">
