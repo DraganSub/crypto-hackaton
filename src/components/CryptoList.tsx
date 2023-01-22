@@ -5,7 +5,7 @@ import { useGetCoinsQuery } from "../services";
 import { coin } from "../types";
 
 export default function CryptoList() {
-    const { data, isLoading, error } = useGetCoinsQuery("");
+    const { data, isLoading, error } = useGetCoinsQuery(10);
     const [coinList, setCoinList] = useState(data?.coins);
     const [search, setSearch] = useState("");
     const navigate = useNavigate();

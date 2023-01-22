@@ -4,7 +4,7 @@ import { coin, coins } from "../types";
 //https://www.emailnator.com/inbox/pjxwfwl@femailtor.com/MTg1ZDRlYjQyMzlmMzAwZg==
 const URL = "https://coinranking1.p.rapidapi.com/";
 const options = {
-    "x-rapidapi-key": process.env.REACT_APP_RAPIDAPI_KEY,
+    "x-rapidapi-key": process.env.REACT_APP_CRYPTO_RAPIDAPI_KEY,
     "x-rapidapi-host": process.env.REACT_APP_CRYPTO_RAPIDAPI_HOST,
 };
 
@@ -12,9 +12,9 @@ export const coinApi = createApi({
     reducerPath: "coinApi",
     baseQuery: fetchBaseQuery({ baseUrl: URL }),
     endpoints: (build) => ({
-        getCoins: build.query<coins, string>({
-            query: () => ({
-                url: `coins?orderBy=marketCap&orderDirection=desc&limit=100&offset=0`,
+        getCoins: build.query<coins, number>({
+            query: (limit: number) => ({
+                url: `coins?orderBy=marketCap&orderDirection=desc&limit=${limit}&offset=0`,
                 headers: options,
             }),
             transformResponse: (response: { data: coins }) => {
