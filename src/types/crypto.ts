@@ -10,7 +10,13 @@ export type coin = {
 
 export type coins = {
     coins: coin[];
-    stats: {
-        total: number;
-    };
+    stats: stats;
+};
+export type stats = {
+    total: number;
+    totalCoins: number;
+    totalMarkets: number;
+    totalExchanges: number;
+    totalMarketCap: string;
+    total24hVolume: string;
 };

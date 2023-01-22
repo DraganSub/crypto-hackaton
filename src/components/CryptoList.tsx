@@ -1,70 +1,70 @@
 import Card from "antd/es/card/Card";
+import Input from "rc-input";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 import { useGetCoinsQuery } from "../services";
 import { coin } from "../types";
 
-export default function CryptoList() {
-    const { data, isLoading, error } = useGetCoinsQuery(10);
+export default function CryptoList({ limit }: { limit: number }) {
+    const { data, isLoading, error } = useGetCoinsQuery(limit);
     const [coinList, setCoinList] = useState(data?.coins);
     const [search, setSearch] = useState("");
-    const navigate = useNavigate();
 
     useEffect(() => {
         setCoinList(
-            data?.coins.filter((val) =>
+            data?.coins.filter((val: { name: string }) =>
                 val.name.toLowerCase().includes(search.toLocaleLowerCase())
             )
         );
     }, [search, data]);
-
-    const onClick = (id: string) => {
-        navigate(`/coins/${id}`);
-    };
 
     if (error) return <p>error</p>;
     if (isLoading) return <p>loading...</p>;
 
     return (
         <>
-            <input
-                placeholder="coin"
-                type={"text"}
-                onChange={(e) => setSearch(e.target.value)}
-            />
-            {coinList?.map((val) => (
-                <CryptoCard
-                    {...val}
-                    key={val.name}
-                    /* onClick={() => onClick(val.uuid)} */
-                />
-            ))}
+            {limit > 10 && (
+                <div className="crypto__search">
+                    <Input
+                        type="text"
+                        placeholder="Search Cryptocurrency"
+                        className="search__input"
+                        onChange={(e) => setSearch(e.target.value)}
+                    />
+                </div>
+            )}
+            <div className="crypto__grid">
+                {coinList?.map((val) => (
+                    <CryptoCard {...val} key={val.name} />
+                ))}
+            </div>
         </>
     );
 }
-
 function CryptoCard(props: coin) {
-    const { name, price, iconUrl, rank, change, marketCap } = props;
+    const { name, price, iconUrl, rank, change, marketCap, uuid } = props;
 
     const priceFixed = Number.parseFloat("" + price).toFixed(2);
     const marketCapFixed = Number.parseFloat(marketCap).toFixed(2);
     const dailyChangeFixed = Number.parseFloat(change).toFixed(2);
     return (
         <Card title={`${rank}. ${name}`} extra={<CryptoImg url={iconUrl} />}>
-            <div className="crypto__data">
-                <div className="crypto__card">
-                    <div className="card__label">Price:</div>
-                    <div className="card__value">{priceFixed}</div>
+            <Link to={`/crypto/${uuid}`}>
+                <div className="crypto__data">
+                    <div className="crypto__card">
+                        <div className="card__label">Price:</div>
+                        <div className="card__value">{priceFixed}</div>
+                    </div>
+                    <div className="crypto__card">
+                        <div className="card__label">Market Cap:</div>
+                        <div className="card__value">{marketCapFixed}</div>
+                    </div>
+                    <div className="crypto__card">
+                        <div className="card__label">Daily Change:</div>
+                        <div className="card__value">{dailyChangeFixed}</div>
+                    </div>
                 </div>
-                <div className="crypto__card">
-                    <div className="card__label">Market Cap:</div>
-                    <div className="card__value">{marketCapFixed}</div>
-                </div>
-                <div className="crypto__card">
-                    <div className="card__label">Daily Change:</div>
-                    <div className="card__value">{dailyChangeFixed}</div>
-                </div>
-            </div>
+            </Link>
         </Card>
     );
 }
