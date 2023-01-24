@@ -364,6 +364,11 @@ margin: 0;
 
 }
 
+.active{
+  background-color: var(--sidemenu-active-color);
+  border-radius: 0px;
+}
+
 .search__input:focus{
   border-color: #40a9ff;
   border-right-width: 1px!important;
@@ -375,6 +380,10 @@ margin: 0;
   outline: 0;
   border: 1px solid rgb(230, 224, 224);
   width: 250px;
+}
+
+.ant-menu-item-icon:active{
+  color: black;
 }
 
 .crypto__search-field{

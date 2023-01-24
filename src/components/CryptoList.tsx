@@ -35,7 +35,9 @@ export default function CryptoList({ limit }: { limit: number }) {
             )}
             <div className="crypto__grid">
                 {coinList?.map((val) => (
-                    <CryptoCard {...val} key={val.name} />
+                    <Link to={`/crypto/${val.uuid}`}>
+                        <CryptoCard {...val} key={val.name} />
+                    </Link>
                 ))}
             </div>
         </>
@@ -49,23 +51,21 @@ function CryptoCard(props: coin) {
     const dailyChangeFixed = Number.parseFloat(change).toFixed(2);
     return (
         <Card title={`${rank}. ${name}`} extra={<CryptoImg url={iconUrl} />}>
-            <Link to={`/crypto/${uuid}`}>
-                <div className="crypto__data">
-                    <div className="crypto__card">
-                        <div className="card__label">Price:</div>
-                        <div className="card__value">{priceFixed}</div>
-                    </div>
-                    <div className="crypto__card">
-                        <div className="card__label">Market Cap:</div>
-                        <div className="card__value">{marketCapFixed}</div>
-                    </div>
-                    <div className="crypto__card">
-                        <div className="card__label">Daily Change:</div>
-                        <div className="card__value">{dailyChangeFixed}</div>
-                    </div>
+            <div className="crypto__data">
+                <div className="crypto__card">
+                    <div className="card__label">Price:</div>
+                    <div className="card__value">{priceFixed}</div>
                 </div>
-            </Link>
-        </Card>
+                <div className="crypto__card">
+                    <div className="card__label">Market Cap:</div>
+                    <div className="card__value">{marketCapFixed}</div>
+                </div>
+                <div className="crypto__card">
+                    <div className="card__label">Daily Change:</div>
+                    <div className="card__value">{dailyChangeFixed}</div>
+                </div>
+            </div>
+        </Card >
     );
 }
 

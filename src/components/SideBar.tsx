@@ -3,7 +3,7 @@ import { Menu } from "antd";
 import Avatar from "antd/es/avatar/avatar";
 import { HomeOutlined, LineChartOutlined, BulbOutlined } from "@ant-design/icons"
 import classNames from "classnames";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default function SideBar() {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(true);
@@ -40,18 +40,19 @@ export default function SideBar() {
           items={[
             {
               key: "1",
-              icon: <HomeOutlined />,
-              label: <Link to="/">Home</Link>,
+              icon: <HomeOutlined style={{ color: "black" }} />,
+              label: <NavLink
+                to="/">Home</NavLink>,
             },
             {
               key: "2",
-              icon: <LineChartOutlined />,
-              label: <Link to="/Cryptocurrencies">Cryptocurrencies</Link>
+              icon: <LineChartOutlined style={{ color: "black" }} />,
+              label: <NavLink to="/Cryptocurrencies">Cryptocurrencies</NavLink>
             },
             {
               key: "3",
-              icon: <BulbOutlined />,
-              label: <Link to="/News">News</Link>
+              icon: <BulbOutlined style={{ color: "black" }} />,
+              label: <NavLink to="/News">News</NavLink>
             }
           ]}
         />

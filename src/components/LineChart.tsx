@@ -79,7 +79,7 @@ export default function LineChart() {
     <div>
       <Select
         size={"middle"}
-        defaultValue="24h"
+        defaultValue="7d"
         onChange={handleChange}
         style={{ width: 200 }}
         options={periodValues}
