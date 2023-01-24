@@ -152,8 +152,9 @@ grid-template-columns: repeat(auto-fit,260px);
 
 .crypto__grid__lg{
   display: grid;
-grid-gap: 30px;
-grid-template-columns: repeat(auto-fit,450px);
+  grid-gap: 30px;
+  grid-template-columns: repeat(auto-fit,450px);
+  justify-content: center;
 }
 
 .crypto__title-group{
@@ -179,6 +180,10 @@ grid-template-columns: repeat(auto-fit,450px);
   font-weight: 600;
   font-size: 1.4rem;
   padding: 0px 10px 0px 10px;
+  
+}
+
+.crypto__search-field{
   
 }
 
