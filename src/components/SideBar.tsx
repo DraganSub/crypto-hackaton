@@ -47,12 +47,12 @@ export default function SideBar() {
             {
               key: "2",
               icon: <LineChartOutlined style={{ color: "black" }} />,
-              label: <NavLink to="/Cryptocurrencies">Cryptocurrencies</NavLink>
+              label: <NavLink to="/cryptocurrencies">Cryptocurrencies</NavLink>
             },
             {
               key: "3",
               icon: <BulbOutlined style={{ color: "black" }} />,
-              label: <NavLink to="/News">News</NavLink>
+              label: <NavLink to="/news">News</NavLink>
             }
           ]}
         />
