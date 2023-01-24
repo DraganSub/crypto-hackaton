@@ -48,6 +48,9 @@ const NewsCard = (props: news) => {
     );
 };
 const CryptoNewsImg = ({ url }: { url: string }) => {
+    if (!url) {
+        return null;
+    }
     // just example, need to make this generic
     return <img className="crypto__news__img" src={url} alt="crypto-news" />;
 };

@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 import { useGetCoinsQuery } from "../services";
 import { coin } from "../types";
 import { numberFormatter } from "../utility";
+import classNames from "classnames";
 import { Skeleton } from "antd";
-
 export default function CryptoList({ limit }: { limit: number }) {
     const { data, isLoading, error } = useGetCoinsQuery(limit);
     const [coinList, setCoinList] = useState(data?.coins);
@@ -47,6 +47,12 @@ export default function CryptoList({ limit }: { limit: number }) {
 }
 function CryptoCard(props: coin) {
     const { name, price, iconUrl, rank, change, marketCap } = props;
+    const dailyChangePrice = numberFormatter(+change);
+
+    const dailyChangeClassname = classNames('card__value', {
+        'negative': dailyChangePrice < 0,
+        'positive': dailyChangePrice > 0
+    });
 
     return (
         <Card title={`${rank}. ${name}`} extra={<CryptoImg url={iconUrl} />}>
@@ -63,7 +69,7 @@ function CryptoCard(props: coin) {
                 </div>
                 <div className="crypto__card">
                     <div className="card__label">Daily Change:</div>
-                    <div className="card__value">
+                    <div className={dailyChangeClassname}>
                         {numberFormatter(+change)}%
                     </div>
                 </div>
