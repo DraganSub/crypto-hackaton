@@ -369,6 +369,19 @@ margin: 0;
   border-radius: 0px;
 }
 
+.padding_right-15{
+  padding-right: 15px;
+}
+
+.negative {
+  color: rgb(213, 51, 51);
+}
+
+.positive{
+  color: rgb(74, 228, 74);
+}
+
+
 .search__input:focus{
   border-color: #40a9ff;
   border-right-width: 1px!important;
@@ -381,9 +394,18 @@ margin: 0;
   border: 1px solid rgb(230, 224, 224);
   width: 250px;
 }
-
+.footer-credits__text,.footer-credits__text:hover{
+  color: black;
+}
 .ant-menu-item-icon:active{
   color: black;
+}
+
+.ant-menu-item .ant-menu-item-active .ant-menu-item-selected{
+  background-color: none;
+}
+.ant-menu-light .ant-menu-item-selected{
+  background-color: none;
 }
 
 .crypto__search-field{
