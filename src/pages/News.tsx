@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import { Select } from "antd";
 import { NewsList } from "../components";
 import { coins } from "../utility";
@@ -6,6 +6,10 @@ import { coins } from "../utility";
 export default function News() {
     const [searcInputValue, setSearchInputValue] = useState<string>("");
     const [searchTerm, setSearchTerm] = useState<string>("");
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
 
     const onChange = (value: string) => {
         setSearchInputValue(value);

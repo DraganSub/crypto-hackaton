@@ -7,6 +7,7 @@ import { coin } from "../types";
 import { numberFormatter } from "../utility";
 import classNames from "classnames";
 import { Skeleton } from "antd";
+
 export default function CryptoList({ limit }: { limit: number }) {
     const { data, isLoading, error } = useGetCoinsQuery(limit);
     const [coinList, setCoinList] = useState(data?.coins);

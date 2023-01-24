@@ -1,9 +1,15 @@
+import { useEffect } from "react";
 import CoinStats from "../components/CoinStats";
 import CryptoList from "../components/CryptoList";
 import NewsList from "../components/NewsList";
 import { Link } from "react-router-dom";
 
 export default function HomePage() {
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
+
     return (
         <div className="homepage">
             <section className="hero_section">
