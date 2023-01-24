@@ -135,6 +135,8 @@ code {
   max-width: 450px;
   min-width: 250px;
   width: max-content;
+  max-height: 450px;
+  height: 100%;
 }
 
 
@@ -142,6 +144,7 @@ code {
   display: flex;
   font-size: 16px;
   justify-content: space-between;
+
 }
 
 .crypto__grid{
@@ -163,6 +166,13 @@ grid-template-columns: repeat(auto-fit,260px);
   align-items: center;
   justify-content: space-between;
   padding:0px 10px 0px 10px;
+  margin-bottom: 40px;
+  margin-top: 20px;
+}
+
+.ant-card-body{
+  max-height: 450px;
+  height: 100%;
 }
 
 .no__img-wrap{

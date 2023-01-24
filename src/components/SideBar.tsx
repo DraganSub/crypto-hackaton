@@ -3,10 +3,11 @@ import { Menu } from "antd";
 import Avatar from "antd/es/avatar/avatar";
 import { HomeOutlined, LineChartOutlined, BulbOutlined } from "@ant-design/icons"
 import classNames from "classnames";
-import { NavLink, Link, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function SideBar() {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(true);
+  const { pathname } = useLocation();
 
   const toggleNavMenu = () => {
     setIsMenuOpen(!isMenuOpen)
@@ -17,9 +18,6 @@ export default function SideBar() {
     "open": isMenuOpen,
     "collapsed": !isMenuOpen
   })
-  const { pathname } = useLocation();
-  console.log([`${pathname}`])
-  const { Item } = Menu;
   return (
     <div className="sidebar">
       <div className="avatar__logo">

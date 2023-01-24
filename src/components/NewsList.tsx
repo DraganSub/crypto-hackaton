@@ -42,7 +42,7 @@ const NewsCard = (props: news) => {
         }
     )
     return (
-        <a href={url}>
+        <a href={url} >
             <Card className="crypto_news-card">
                 <div className="crypto__card__title">
                     <h5>{name}</h5>
