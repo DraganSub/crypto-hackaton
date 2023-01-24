@@ -4,34 +4,41 @@ import { NewsList } from "../components";
 import { coins } from "../utility";
 
 export default function News() {
-  const [searchInputValue, setSearchInputValue] = useState<string>("")
-  const [searchTerm, setSearchTerm] = useState<string>("");
+    const [searcInputValue, setSearchInputValue] = useState<string>("");
+    const [searchTerm, setSearchTerm] = useState<string>("");
 
-  const onChange = (value: string) => {
-    setSearchInputValue(value);
-  };
+    const onChange = (value: string) => {
+        setSearchInputValue(value);
+    };
 
-  const onSearch = (value: string) => {
-    setSearchTerm(value)
-  };
+    const onSearch = (value?: string) => {
+        setSearchTerm(value || searcInputValue);
+    };
 
-  return <section className="crypto-news">
-    <div className="crypto__news--titles-group">
-      <Select
-        className="crypto__search-field"
-        showSearch
-        placeholder="Enter your crypto here..."
-        optionFilterProp="children"
-        onChange={onChange}
-        onSearch={onSearch}
-        filterOption={(input, option) =>
-          (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
-        }
-        options={coins}
-      />
-    </div>
-    <div className="crypto__grid__lg">
-      {<NewsList limit="6" />}
-    </div>
-  </section>
+    return (
+        <section className="crypto-news">
+            <div className="crypto__title-group">
+                <Select
+                    className="crypto__search-field"
+                    showSearch
+                    placeholder="Enter your crypto here..."
+                    optionFilterProp="children"
+                    onChange={onChange}
+                    onSelect={onSearch}
+                    filterOption={(input, option) =>
+                        (option?.label ?? "")
+                            .toLowerCase()
+                            .includes(input.toLowerCase())
+                    }
+                    onInputKeyDown={(e) => {
+                        if (e.nativeEvent.key === "Enter") onSearch();
+                    }}
+                    options={coins}
+                />
+            </div>
+            <div className="crypto__grid__lg">
+                {<NewsList limit="6" theme={searchTerm} />}
+            </div>
+        </section>
+    );
 }

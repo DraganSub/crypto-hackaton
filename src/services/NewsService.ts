@@ -20,7 +20,6 @@ export const newsApi = createApi({
                 headers: options,
             }),
             transformResponse: (response: { value: news[]; sort: [] }) => {
-                console.log(response);
                 return response;
             },
         }),
