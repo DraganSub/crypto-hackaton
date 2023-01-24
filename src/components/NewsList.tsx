@@ -12,7 +12,7 @@ export default function NewsList({
     console.log(limit);
     const { data, isLoading, error } = useGetNewsQuery({
         theme: theme ? theme : "cryptocurrency",
-        limit: limit ? limit : "7",
+        limit: limit ? limit : "6",
     });
     if (error) return <p>error</p>;
     if (isLoading) return <p>loading...</p>;
