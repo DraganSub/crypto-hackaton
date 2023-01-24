@@ -1,4 +1,3 @@
-import { Input } from "antd";
 import { CryptoList } from "../components";
 
 export default function Cryptocurrencies() {

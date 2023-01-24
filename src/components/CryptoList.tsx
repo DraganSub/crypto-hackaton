@@ -36,8 +36,8 @@ export default function CryptoList({ limit }: { limit: number }) {
             )}
             <div className="crypto__grid">
                 {coinList?.map((val) => (
-                    <Link to={`/crypto/${val.uuid}`}>
-                        <CryptoCard {...val} key={val.name} />
+                    <Link to={`/crypto/${val.uuid}`} key={val.name}>
+                        <CryptoCard {...val} />
                     </Link>
                 ))}
             </div>

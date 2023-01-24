@@ -1,6 +1,7 @@
 import CoinStats from "../components/CoinStats";
 import CryptoList from "../components/CryptoList";
 import NewsList from "../components/NewsList";
+import { Link } from "react-router-dom";
 
 export default function HomePage() {
     return (
@@ -14,7 +15,12 @@ export default function HomePage() {
                         <h2 className="crypto-currency__title">
                             Top 10 Cryptocurrencies
                         </h2>
-                        <a className="show-more-btn">Show more</a>
+                        <Link
+                            to={"/cryptocurrencies"}
+                            className="show-more-btn"
+                        >
+                            Show more
+                        </Link>
                     </div>
                     <CryptoList limit={10} />
                 </section>
@@ -24,7 +30,9 @@ export default function HomePage() {
                         <h2 className="crypto-news__title">
                             Latest Crypto News
                         </h2>
-                        <a className="show-more-btn">Show more</a>
+                        <Link to={"/news"} className="show-more-btn">
+                            Show more
+                        </Link>
                     </div>
                     <div className="crypto__grid__lg">
                         {<NewsList limit="6" />}
