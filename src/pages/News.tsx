@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Select } from "antd";
 import { NewsList } from "../components";
 import { coins } from "../utility";
-const { Option } = Select;
+
 export default function News() {
   const [searchInputValue, setSearchInputValue] = useState<string>("")
   const [searchTerm, setSearchTerm] = useState<string>("");
@@ -11,13 +11,12 @@ export default function News() {
     setSearchInputValue(value);
   };
 
-
   const onSearch = (value: string) => {
     setSearchTerm(value)
   };
 
   return <section className="crypto-news">
-    <div className="crypto__title-group">
+    <div className="crypto__news--titles-group">
       <Select
         className="crypto__search-field"
         showSearch
@@ -30,8 +29,6 @@ export default function News() {
         }
         options={coins}
       />
-
-
     </div>
     <div className="crypto__grid__lg">
       {<NewsList limit="6" />}
