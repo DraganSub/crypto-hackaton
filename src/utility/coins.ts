@@ -1,3 +1,6 @@
+import { numberFormatter } from "./formatter";
+import { coin } from "../types";
+
 export const coins = [{
     value: "Bitcoin",
     label: "Bitcoin"
@@ -404,3 +407,22 @@ export const coins = [{
     label: "Arweave",
 }
 ];
+
+export function coinDetailsMapper(data: coin) {
+    return {
+        coinName: data.name,
+        coinPrice: numberFormatter(Number(data.price)),
+        coinSymbol: data.symbol,
+        coinRank: data.rank,
+        coinMarketCap: numberFormatter(Number(data.marketCap)),
+        coin24hVolume: numberFormatter(Number(data['24hVolume'])),
+        allTimeHigh: numberFormatter(Number(data.allTimeHigh.price)),
+        numberOfTickets: data.numberOfMarkets,
+        numberOfExchanges: data.numberOfExchanges,
+        isConfirmed: data.supply.confirmed,
+        totalSupply: numberFormatter(Number(data.supply.total)),
+        circulatingSupply: numberFormatter(Number(data.supply.circulating)),
+        description: data.description,
+        links: data.links
+    }
+}
