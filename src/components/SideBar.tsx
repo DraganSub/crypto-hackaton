@@ -3,7 +3,7 @@ import { Menu } from "antd";
 import Avatar from "antd/es/avatar/avatar";
 import { HomeOutlined, LineChartOutlined, BulbOutlined } from "@ant-design/icons"
 import classNames from "classnames";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, Link, useLocation } from "react-router-dom";
 
 export default function SideBar() {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(true);
@@ -38,34 +38,27 @@ export default function SideBar() {
           className={sideMenuClass}
           style={{ backgroundColor: "#fff", width: "100" }}
           defaultSelectedKeys={[`${pathname}`]}
-          onSelect={() => { }}
+          selectedKeys={[`${pathname}`]}
+          items={[
+            {
+              key: '/home',
+              icon: <HomeOutlined style={{ color: "black" }} />,
+              label: <Link to="/home">Home</Link>,
+            },
+            {
+              key: '/cryptocurrencies',
+              icon: <LineChartOutlined style={{ color: "black" }} />,
+              label: <Link to="/cryptocurrencies">Cryptocurrencies</Link>,
+            },
+            {
+              key: '/news',
+              icon: <BulbOutlined style={{ color: "black" }} />,
+              label: <Link to="/news">News</Link>,
+            },
+          ]}
         >
-          <NavLink to="/home">
-            <div className={pathname.includes("/home") ? "active" : ""}>
-              <Item key="/home" style={{ backgroundColor: "transparent" }} >
-                <span className="padding_right-15"><HomeOutlined style={{ color: "black" }} /></span>
-                <span>Home</span>
-              </Item>
-            </div>
-          </NavLink>
-          <NavLink to="/cryptocurrencies">
-            <div className={pathname.includes("/cryptocurrencies") ? "active" : ""}>
-              <Item key="/cryptocurrencies" style={{ backgroundColor: "transparent" }}>
-                <span className="padding_right-15"><LineChartOutlined style={{ color: "black" }} /></span>
-                <span>Cryptocurrencies</span>
-              </Item>
-            </div>
-          </NavLink>
-          <NavLink to="/news">
-            <div className={pathname.includes("/news") ? "active" : ""}>
-              <Item key="/news" style={{ backgroundColor: "transparent" }} >
-                <span className="padding_right-15"><BulbOutlined style={{ color: "black" }} /></span>
-                <span>News</span>
-              </Item>
-            </div>
-          </NavLink>
         </Menu>
       </div>
-    </div>
+    </div >
   )
 }

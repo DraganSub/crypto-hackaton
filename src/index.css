@@ -141,6 +141,7 @@ code {
 .crypto__card__title{
   display: flex;
   font-size: 16px;
+  justify-content: space-between;
 }
 
 .crypto__grid{
@@ -162,6 +163,11 @@ grid-template-columns: repeat(auto-fit,260px);
   align-items: center;
   justify-content: space-between;
   padding:0px 10px 0px 10px;
+}
+
+.no__img-wrap{
+  width: 100px ;
+  aspect-ratio: 1;
 }
 
 .news-info{
@@ -410,6 +416,11 @@ margin: 0;
 
 .crypto__search-field{
   width: 200px;
+}
+
+.crypto__news__img{
+  width:100px;
+  aspect-ratio: 1;
 }
 /* region media queries  */
 

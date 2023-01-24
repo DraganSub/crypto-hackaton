@@ -3,6 +3,7 @@ import { useGetNewsQuery } from "../services";
 import { news } from "../types";
 import { dateFormatter } from "../utility";
 import { Skeleton } from "antd";
+import classNames from "classnames";
 
 export default function NewsList({
     theme,
@@ -28,17 +29,28 @@ export default function NewsList({
     );
 }
 
+
+
 const NewsCard = (props: news) => {
     const { name, image, url, description, datePublished, provider } = props;
     const formattedDate = dateFormatter(datePublished);
+
+    const noImgClassName = classNames(
+        "",
+        {
+            "no__img-wrap": image?.thumbnail.contentUrl == null
+        }
+    )
     return (
         <a href={url}>
             <Card className="crypto_news-card">
                 <div className="crypto__card__title">
                     <h5>{name}</h5>
-                    <CryptoNewsImg url={image?.thumbnail.contentUrl} />
+                    <div className={noImgClassName}>
+                        <CryptoNewsImg url={image?.thumbnail.contentUrl} />
+                    </div>
                 </div>
-                <p>{description}</p>
+                <p>{description!.substring(0, 150)}...</p>
                 <div className="news-info">
                     <p className="news-provider">{provider[0].name}</p>
                     <p className="news-time">{formattedDate}</p>
