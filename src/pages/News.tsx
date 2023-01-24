@@ -37,7 +37,7 @@ export default function News() {
                 />
             </div>
             <div className="crypto__grid__lg">
-                {<NewsList limit="6" theme={searchTerm} />}
+                {<NewsList limit="15" theme={searchTerm} />}
             </div>
         </section>
     );

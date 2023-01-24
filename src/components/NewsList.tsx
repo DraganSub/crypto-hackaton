@@ -27,23 +27,24 @@ export default function NewsList({
 }
 
 const NewsCard = (props: news) => {
-    const { name, image, url, description, datePublished, category, provider } =
-        props;
+    const { name, image, url, description, datePublished, provider } = props;
     return (
-        <Card className="crypto_news-card">
-            <div className="crypto__card__title">
-                <h5>{name}</h5>
-                <CryptoNewsImg url={image?.thumbnail.contentUrl} />
-            </div>
-            <p>{description}</p>
-            <div className="news-info">
-                <p className="news-provider">{provider[0].name}</p>
-                <p className="news-time">{datePublished}</p>
-            </div>
-        </Card>
+        <a href={url}>
+            <Card className="crypto_news-card">
+                <div className="crypto__card__title">
+                    <h5>{name}</h5>
+                    <CryptoNewsImg url={image?.thumbnail.contentUrl} />
+                </div>
+                <p>{description}</p>
+                <div className="news-info">
+                    <p className="news-provider">{provider[0].name}</p>
+                    <p className="news-time">{datePublished}</p>
+                </div>
+            </Card>
+        </a>
     );
 };
 const CryptoNewsImg = ({ url }: { url: string }) => {
     // just example, need to make this generic
-    return <img className="crypto__news__img" src={url} />;
+    return <img className="crypto__news__img" src={url} alt="crypto-news" />;
 };

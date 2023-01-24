@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useGetCoinsQuery } from "../services";
 import { coin } from "../types";
+import { numberFormatter } from "../utility";
 
 export default function CryptoList({ limit }: { limit: number }) {
     const { data, isLoading, error } = useGetCoinsQuery(limit);
@@ -46,15 +47,35 @@ export default function CryptoList({ limit }: { limit: number }) {
 function CryptoCard(props: coin) {
     const { name, price, iconUrl, rank, change, marketCap, uuid } = props;
 
-    const priceFixed = Number.parseFloat("" + price).toFixed(2);
-    const marketCapFixed = Number.parseFloat(marketCap).toFixed(2);
-    const dailyChangeFixed = Number.parseFloat(change).toFixed(2);
     return (
         <Card title={`${rank}. ${name}`} extra={<CryptoImg url={iconUrl} />}>
+<<<<<<< Updated upstream
             <div className="crypto__data">
                 <div className="crypto__card">
                     <div className="card__label">Price:</div>
                     <div className="card__value">{priceFixed}</div>
+=======
+            <Link to={`/crypto/${uuid}`}>
+                <div className="crypto__data">
+                    <div className="crypto__card">
+                        <div className="card__label">Price:</div>
+                        <div className="card__value">
+                            {numberFormatter(+price)}
+                        </div>
+                    </div>
+                    <div className="crypto__card">
+                        <div className="card__label">Market Cap:</div>
+                        <div className="card__value">
+                            {numberFormatter(+marketCap)}
+                        </div>
+                    </div>
+                    <div className="crypto__card">
+                        <div className="card__label">Daily Change:</div>
+                        <div className="card__value">
+                            {numberFormatter(+change)}%
+                        </div>
+                    </div>
+>>>>>>> Stashed changes
                 </div>
                 <div className="crypto__card">
                     <div className="card__label">Market Cap:</div>
@@ -71,5 +92,5 @@ function CryptoCard(props: coin) {
 
 const CryptoImg = ({ url }: { url: string }) => {
     // just example, need to make this generic
-    return <img className="crypto__img" src={url} />;
+    return <img className="crypto__img" src={url} alt="crypto" />;
 };
