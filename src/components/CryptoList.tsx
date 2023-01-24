@@ -71,7 +71,7 @@ function CryptoCard(props: coin) {
                 <div className="crypto__card">
                     <div className="card__label">Daily Change:</div>
                     <div className={dailyChangeClassname}>
-                        {numberFormatter(+change)}%
+                        {dailyChangePrice}%
                     </div>
                 </div>
             </div>
