@@ -1,6 +1,7 @@
 import { Card } from "antd";
 import { useGetNewsQuery } from "../services";
 import { news } from "../types";
+import { dateFormatter } from "../utility";
 
 export default function NewsList({
     theme,
@@ -28,6 +29,7 @@ export default function NewsList({
 
 const NewsCard = (props: news) => {
     const { name, image, url, description, datePublished, provider } = props;
+    const formattedDate = dateFormatter(datePublished);
     return (
         <a href={url}>
             <Card className="crypto_news-card">
@@ -38,10 +40,11 @@ const NewsCard = (props: news) => {
                 <p>{description}</p>
                 <div className="news-info">
                     <p className="news-provider">{provider[0].name}</p>
-                    <p className="news-time">{datePublished}</p>
+                    <p className="news-time">{formattedDate}</p>
                 </div>
             </Card>
         </a>
+    
     );
 };
 const CryptoNewsImg = ({ url }: { url: string }) => {

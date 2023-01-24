@@ -13,3 +13,19 @@ export function numberFormatter(num: number) {
     }
     return num;
 }
+
+export function dateFormatter(date: string) {
+    const dateObject = new Date(date);
+    const dateObjectNow = new Date();
+
+    if (dateObject.getHours() < dateObjectNow.getHours()) {
+        return `${Math.round(dateObjectNow.getHours() - dateObject.getHours())} hours ago`;
+    }
+    else if (dateObject.getHours() > dateObjectNow.getHours()) {
+        return `a day ago`;
+    }
+    else {
+        return dateObject.toLocaleDateString('en-GB');
+    };
+}
+
