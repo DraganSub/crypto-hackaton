@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useGetCoinsQuery } from "../services";
 import { coin } from "../types";
 import { numberFormatter } from "../utility";
+import { Skeleton } from "antd";
 
 export default function CryptoList({ limit }: { limit: number }) {
     const { data, isLoading, error } = useGetCoinsQuery(limit);
@@ -20,7 +21,7 @@ export default function CryptoList({ limit }: { limit: number }) {
     }, [search, data]);
 
     if (error) return <p>error</p>;
-    if (isLoading) return <p>loading...</p>;
+    if (isLoading) return <Skeleton />;
 
     return (
         <>

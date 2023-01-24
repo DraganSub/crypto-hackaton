@@ -2,6 +2,7 @@ import { Card } from "antd";
 import { useGetNewsQuery } from "../services";
 import { news } from "../types";
 import { dateFormatter } from "../utility";
+import { Skeleton } from "antd";
 
 export default function NewsList({
     theme,
@@ -15,7 +16,7 @@ export default function NewsList({
         limit: limit ? limit : "6",
     });
     if (error) return <p>error</p>;
-    if (isLoading) return <p>loading...</p>;
+    if (isLoading) return <Skeleton />;
     if (!data || !data.value) return null;
 
     return (
@@ -44,7 +45,6 @@ const NewsCard = (props: news) => {
                 </div>
             </Card>
         </a>
-    
     );
 };
 const CryptoNewsImg = ({ url }: { url: string }) => {
