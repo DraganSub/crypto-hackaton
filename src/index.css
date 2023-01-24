@@ -210,6 +210,78 @@ grid-template-columns: repeat(auto-fit,450px);
 
 
 
+/******************** CRYPTO DETAILS PAGE ********************/
+/* crypto-details */
+.crypto-details__top{
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  line-height: 1;
+} 
+.crypto-details__top > h1{
+  font-size: 32px;
+  color: var(--secondary-font-color);
+  margin: 40px 0px 20px 0px;
+}
+
+.crypto-details__top > p{
+  font-size: 18px;
+  color: var(--label-secondary-font-color);
+}
+
+.crypto-details__chart{
+  position: relative;
+  height: max-content;
+  padding: 40px;
+}
+
+.chart__select-field{
+  width: 200px;
+  padding: 5px;
+  border: 1px solid rgb(223, 217, 217);
+ 
+}
+
+.crypto-details__stats{
+  display: flex;
+  gap: 20px;
+  padding: 20px 0px;
+  flex-wrap: wrap;
+  flex-direction: row;
+justify-content: center;
+}
+.crypto-stats{
+  max-width: 35vw;
+}
+.stats__title{
+  font-size: 24px;
+  color: var(--secondary-font-color);
+margin: 0;
+}
+.stats__desc{
+  font-size: 18px;
+  color: var(--label-secondary-font-color);
+}
+
+.stats__card{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom:1px solid rgb(211, 207, 207) ;
+  line-height: 2;
+}
+
+.stats-title{
+  font-weight:300;
+}
+.stats-value{
+  font-weight: 600;
+}
+
+
+
 
 /*********  FOOTER  **********/
 .main-footer{
@@ -252,6 +324,17 @@ grid-template-columns: repeat(auto-fit,450px);
   }
   .crypto-currency__title{
     font-size: 25px;
+  }
+}
+
+@media screen and (max-width:1100px){
+  .crypto-stats{
+    max-width: 100vw;
+  
+  }
+
+  .crypto-details__stats{
+    padding: 40px;
   }
 }
   

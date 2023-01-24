@@ -7,6 +7,6 @@ export const store = configureStore({
         [coinApi.reducerPath]: coinApi.reducer,
         [newsApi.reducerPath]: newsApi.reducer,
     },
-    middleware: (getDefaultMiddleware) =>
+    middleware: (getDefaultMiddleware: any) =>
         getDefaultMiddleware().concat(coinApi.middleware, newsApi.middleware),
 });

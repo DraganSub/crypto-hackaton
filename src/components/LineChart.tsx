@@ -13,6 +13,7 @@ import {
 import { useParams } from "react-router-dom";
 import { Line } from 'react-chartjs-2';
 import { useGetCoinHistoryQuery } from "../services";
+import { Select } from "antd";
 
 ChartJS.register(
   CategoryScale,
@@ -62,21 +63,27 @@ const options = {
   },
 };
 
-const periodValues = ['3h', '24h', '7d', '30d', '3m', '1y', '3y', '5y'];
+// TODO: move this to constants
+
+const periodValues = [
+  { value: '3h', label: '3h' }, { value: '24h', label: '24h' }, { value: '7d', label: '7d' }, { value: '30d', label: '30d' }, { value: '3m', label: '3m' }, { value: '1y', label: '1y' }, { value: '3y', label: '3y' }, { value: '5y', label: '5y' }];
 
 export default function LineChart() {
-  const [selectValue, setSelectValue] = useState('7d');
+  const [selectValue, setSelectValue] = useState<string>('7d');
+
+  const handleChange = (value: string) => {
+    setSelectValue(value)
+  }
 
   return (
     <div>
-      <select
-        value={selectValue}
-        onChange={(e) => setSelectValue(e.target.value)}
-      >
-        {periodValues.map(value =>
-          <option value={value}>{value}</option>
-        )}
-      </select>
+      <Select
+        size={"middle"}
+        defaultValue="24h"
+        onChange={handleChange}
+        style={{ width: 200 }}
+        options={periodValues}
+      />
       <LineComponent options={options} selectValue={selectValue} />
     </div>
   )
@@ -92,7 +99,7 @@ function LineComponent(props: any) {
   const filterLabels: string[] = [];
   const filterPrice: number[] = [];
 
-  data?.history?.map(e => {
+  data?.history?.map((e: any) => {
     filterLabels.push(new Date(e?.timestamp * 1000).toLocaleDateString('en-GB'))
     filterPrice.push(e?.price);
   })
