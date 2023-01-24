@@ -45,48 +45,29 @@ export default function CryptoList({ limit }: { limit: number }) {
     );
 }
 function CryptoCard(props: coin) {
-    const { name, price, iconUrl, rank, change, marketCap, uuid } = props;
+    const { name, price, iconUrl, rank, change, marketCap } = props;
 
     return (
         <Card title={`${rank}. ${name}`} extra={<CryptoImg url={iconUrl} />}>
-<<<<<<< Updated upstream
             <div className="crypto__data">
                 <div className="crypto__card">
                     <div className="card__label">Price:</div>
-                    <div className="card__value">{priceFixed}</div>
-=======
-            <Link to={`/crypto/${uuid}`}>
-                <div className="crypto__data">
-                    <div className="crypto__card">
-                        <div className="card__label">Price:</div>
-                        <div className="card__value">
-                            {numberFormatter(+price)}
-                        </div>
-                    </div>
-                    <div className="crypto__card">
-                        <div className="card__label">Market Cap:</div>
-                        <div className="card__value">
-                            {numberFormatter(+marketCap)}
-                        </div>
-                    </div>
-                    <div className="crypto__card">
-                        <div className="card__label">Daily Change:</div>
-                        <div className="card__value">
-                            {numberFormatter(+change)}%
-                        </div>
-                    </div>
->>>>>>> Stashed changes
+                    <div className="card__value">{numberFormatter(+price)}</div>
                 </div>
                 <div className="crypto__card">
                     <div className="card__label">Market Cap:</div>
-                    <div className="card__value">{marketCapFixed}</div>
+                    <div className="card__value">
+                        {numberFormatter(+marketCap)}
+                    </div>
                 </div>
                 <div className="crypto__card">
                     <div className="card__label">Daily Change:</div>
-                    <div className="card__value">{dailyChangeFixed}</div>
+                    <div className="card__value">
+                        {numberFormatter(+change)}%
+                    </div>
                 </div>
             </div>
-        </Card >
+        </Card>
     );
 }
 
