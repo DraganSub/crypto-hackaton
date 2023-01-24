@@ -15,7 +15,7 @@ export const newsApi = createApi({
             { value: news[] },
             { theme: string; limit: string }
         >({
-            query: (limit) => ({
+            query: ({ limit, theme }) => ({
                 url: `/search?q=cryptocurrency&safeSearch=Off&textFormat=Raw&freshness=Day&count=${limit}`,
                 headers: options,
             }),
