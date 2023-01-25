@@ -20,14 +20,16 @@ export default function SideBar() {
   })
   return (
     <div className="sidebar">
-      <div className="avatar__logo">
-        <Avatar
-          src="https://raw.githubusercontent.com/chrisstef/3-commas-verse/master/src/images/3commas_logo.png"
-          alt="logo"
-          style={{ borderRadius: "5px" }}
-        />
-        <h2>3CommasVerse</h2>
-      </div>
+      <Link to="/home" className="link--no-style">
+        <div className="avatar__logo">
+          <Avatar
+            src="https://raw.githubusercontent.com/chrisstef/3-commas-verse/master/src/images/3commas_logo.png"
+            alt="logo"
+            style={{ borderRadius: "5px" }}
+          />
+          <h2 className="link--no-style">3CommasVerse</h2>
+        </div>
+      </Link>
       <div className="sidebar__menu">
         <div className="hamburger-menu">
           <i className="fa-solid fa-bars icon__24" onClick={toggleNavMenu}></i>

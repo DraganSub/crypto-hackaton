@@ -4,6 +4,8 @@ import { news } from "../types";
 import { dateFormatter } from "../utility";
 import { Skeleton } from "antd";
 import classNames from "classnames";
+import { NewsSkeletonLoader } from ".";
+import ErrorComponent from "./ErrorComponent";
 
 export default function NewsList({
     theme,
@@ -16,8 +18,8 @@ export default function NewsList({
         theme: theme ? theme : "cryptocurrency",
         limit: limit ? limit : "6",
     });
-    if (error) return <p>error</p>;
-    if (isLoading) return <Skeleton />;
+    if (error) return <ErrorComponent />;
+    if (isLoading) return <NewsSkeletonLoader />;
     if (!data || !data.value) return null;
 
     return (

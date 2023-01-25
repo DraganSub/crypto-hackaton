@@ -169,15 +169,43 @@ grid-template-columns: repeat(auto-fit,260px);
   margin-bottom: 40px;
   margin-top: 20px;
 }
+.link--no-style{
+  text-transform: none;
+  color: black;
+}
+.position--center{
+  position: absolute;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+}
 
 .ant-card-body{
   max-height: 450px;
   height: 100%;
 }
+.crypto-stats__info-container > p > a{
+  color: #00a59a;
+}
+
+.crypto_news-card{
+  transition: 0.5s;
+}
+.crypto_news-card:hover{
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transition: 0.5s;
+}
 
 .no__img-wrap{
   width: 100px ;
   aspect-ratio: 1;
+}
+.stats__card{
+  padding: 0px 10px;
+}
+
+.stats__card:hover{
+  background-color: #fff;
 }
 
 .news-info{

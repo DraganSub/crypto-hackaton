@@ -6,7 +6,6 @@ import { coins } from "../utility";
 export default function News() {
     const [searcInputValue, setSearchInputValue] = useState<string>("");
     const [searchTerm, setSearchTerm] = useState<string>("");
-
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [])

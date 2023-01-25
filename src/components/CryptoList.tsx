@@ -6,7 +6,8 @@ import { useGetCoinsQuery } from "../services";
 import { coin } from "../types";
 import { numberFormatter } from "../utility";
 import classNames from "classnames";
-import { Skeleton } from "antd";
+import { CryptoSkeletonLoader } from ".";
+import ErrorComponent from "./ErrorComponent";
 
 export default function CryptoList({ limit }: { limit: number }) {
     const { data, isLoading, error } = useGetCoinsQuery(limit);
@@ -21,8 +22,8 @@ export default function CryptoList({ limit }: { limit: number }) {
         );
     }, [search, data]);
 
-    if (error) return <p>error</p>;
-    if (isLoading) return <Skeleton />;
+    if (error) return <ErrorComponent />;
+    if (isLoading) return <CryptoSkeletonLoader />;
 
     return (
         <>

@@ -11,7 +11,6 @@ export default function Footer() {
         </Link>
       </div>
       <div className="footer-nav">
-        {/* TODO: add links */}
         <Link to="/home">Home</Link>
         <Link to="/cryptocurrencies">Cryptocurrencies</Link>
         <Link to="/news">News</Link>

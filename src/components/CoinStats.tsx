@@ -1,10 +1,10 @@
 import { useGetCoinStatsQuery } from "../services";
 import { numberFormatter } from "../utility";
-import { Skeleton } from "antd";
+import { CryptoDetailsPageLoader } from ".";
 
 export default function CoinStats() {
     const { data, isLoading } = useGetCoinStatsQuery(null);
-    if (isLoading) return <Skeleton />;
+    if (isLoading) return <CryptoDetailsPageLoader />;
     if (!data) return null;
     return (
         <div className="hero_info_container">

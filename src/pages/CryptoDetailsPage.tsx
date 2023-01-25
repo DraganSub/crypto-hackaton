@@ -11,12 +11,13 @@ import {
   TrophyOutlined,
 } from "@ant-design/icons";
 import { Col } from "antd";
-import { LineChart } from "../components";
+import { ErrorComponent, LineChart } from "../components";
 import { useParams } from "react-router-dom";
 import { useGetCoinQuery } from "../services";
 import { coinDetailsMapper } from "../utility";
 import { StatisticsSectionPropTypes, CoinLinks } from "../types";
 import parse from "html-react-parser";
+import { CryptoDetailsPageLoader } from "../components";
 
 export default function CryptoDetailsPage(): JSX.Element | null {
   const { cryptoId } = useParams();
@@ -26,8 +27,8 @@ export default function CryptoDetailsPage(): JSX.Element | null {
     window.scrollTo(0, 0);
   }, [])
 
-  if (error) return <p>error</p>;
-  if (isLoading) return <p>"Loading....</p>;
+  if (error) return <ErrorComponent />;
+  if (isLoading) return <CryptoDetailsPageLoader />;
   if (!data) {
     return null;
   }
@@ -41,11 +42,11 @@ export default function CryptoDetailsPage(): JSX.Element | null {
       <div className="crypto-details__top">
         <h1>
           {coinName} ({coinSymbol}) Price
-        </h1>
+          </h1>
         <p>
           {coinName} live price in US Dollar (USD). View value
-          statistics, market cap and supply.
-        </p>
+            statistics, market cap and supply.
+          </p>
       </div>
       <div className="crypto-details__chart">
         <LineChart />
@@ -57,7 +58,7 @@ export default function CryptoDetailsPage(): JSX.Element | null {
         <div className="crypto-stats__info-container">
           <h1 className="crypto-stats__title--main">
             What is {coinName}?
-          </h1>
+            </h1>
           {parse(description)}
         </div>
 
