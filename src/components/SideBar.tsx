@@ -1,14 +1,15 @@
 import { useState } from "react";
-import { Menu } from "antd";
+import { Menu, Switch } from "antd";
 import Avatar from "antd/es/avatar/avatar";
 import { HomeOutlined, LineChartOutlined, BulbOutlined } from "@ant-design/icons"
 import classNames from "classnames";
 import { Link, useLocation } from "react-router-dom";
+import { useTheme } from "../hooks";
 
 export default function SideBar() {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(true);
   const { pathname } = useLocation();
-
+  const { theme, setTheme } = useTheme();
   const toggleNavMenu = () => {
     setIsMenuOpen(!isMenuOpen)
   }
@@ -17,7 +18,19 @@ export default function SideBar() {
     "side-menu", {
     "open": isMenuOpen,
     "collapsed": !isMenuOpen
-  })
+  });
+
+  const handleSwitchChange = () => {
+    let newTheme = theme;
+    if (theme === "light") {
+      newTheme = "dark"
+    } else {
+      newTheme = "light"
+    }
+    setTheme(newTheme)
+  }
+  const defaultCheckedSwitch = theme === "light" ? true : false;
+
   return (
     <div className="sidebar">
       <Link to="/home" className="link--no-style">
@@ -30,6 +43,7 @@ export default function SideBar() {
           <h2 className="link--no-style">3CommasVerse</h2>
         </div>
       </Link>
+      <Switch onChange={handleSwitchChange} defaultChecked={defaultCheckedSwitch} />
       <div className="sidebar__menu">
         <div className="hamburger-menu">
           <i className="fa-solid fa-bars icon__24" onClick={toggleNavMenu}></i>

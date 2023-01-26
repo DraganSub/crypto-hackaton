@@ -1,7 +1,12 @@
+import ThemeContextContainer from "./context/ThemeContextContainer";
 import { MainLayout } from "./layouts";
 
 function App() {
-    return <MainLayout />;
+    return (
+        <ThemeContextContainer>
+            <MainLayout />
+        </ThemeContextContainer>
+    )
 }
 
 export default App;

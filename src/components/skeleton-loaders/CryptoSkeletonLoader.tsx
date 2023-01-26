@@ -16,9 +16,9 @@ export const CryptoSkeletonLoader = () => {
         />
       </div>
       <div className="crypto__grid">
-        {cryptoSkeletonData.map(() => {
+        {cryptoSkeletonData.map((item) => {
           return (
-            <Card title={<Skeleton.Input active={true} size={"small"} />} extra={<Skeleton.Avatar active={true} size={"large"} shape={"circle"} />}>
+            <Card key={item} title={<Skeleton.Input active={true} size={"small"} />} extra={<Skeleton.Avatar active={true} size={"large"} shape={"circle"} />}>
               <div className="crypto__data">
                 <div className="card__label" style={{ marginBottom: "10px" }}> <Skeleton.Input active={true} size={"small"} /> </div>
                 <div className="card__label" style={{ marginBottom: "10px" }}> <Skeleton.Input active={true} size={"small"} /> </div>
