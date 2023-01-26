@@ -3,9 +3,9 @@ import CoinStats from "../components/CoinStats";
 import CryptoList from "../components/CryptoList";
 import NewsList from "../components/NewsList";
 import { Link } from "react-router-dom";
+import "../style/HomePage.css";
 
 export default function HomePage() {
-
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
