@@ -14,7 +14,9 @@
 .flex{
    display: flex;
 } 
-
+.no-border .ant-card-head {
+   border: none;
+}
 
 .card-is--dark{
    background: #254B62;
