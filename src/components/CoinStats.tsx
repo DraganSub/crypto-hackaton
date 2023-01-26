@@ -1,13 +1,23 @@
 import { useGetCoinStatsQuery } from "../services";
 import { numberFormatter } from "../utility";
 import { CryptoDetailsPageLoader } from ".";
+import classNames from "classnames";
+import { useTheme } from "../hooks";
 
 export default function CoinStats() {
     const { data, isLoading } = useGetCoinStatsQuery(null);
+    const { theme } = useTheme();
     if (isLoading) return <CryptoDetailsPageLoader />;
     if (!data) return null;
+
+
+    const homePageHeroClassName = classNames(
+        "hero_info_container", {
+        "is--dark": theme === "dark"
+    }
+    )
     return (
-        <div className="hero_info_container">
+        <div className={homePageHeroClassName}>
             <div className="hero__total">
                 <div className="hero__label">Total Cryptocurrencies</div>
                 <div className="hero__data">

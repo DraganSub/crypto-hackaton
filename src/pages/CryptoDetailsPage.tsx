@@ -19,10 +19,13 @@ import { StatisticsSectionPropTypes, CoinLinks } from "../types";
 import { CryptoDetailsPageLoader } from "../components";
 import parse from "html-react-parser";
 import "../style/CryptoDetailsPage.css";
+import classNames from "classnames";
+import { useTheme } from "../hooks";
 
 export default function CryptoDetailsPage(): JSX.Element | null {
     const { cryptoId } = useParams();
     const { data, isLoading, error } = useGetCoinQuery(cryptoId as string);
+    const { theme } = useTheme();
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -38,9 +41,31 @@ export default function CryptoDetailsPage(): JSX.Element | null {
 
     const { coinName, coinSymbol, description, links } = mappedData;
 
+    const statsClassName = classNames(
+        "stats__card",
+        {
+            "stats__card-dark": theme === "dark"
+        }
+    )
+
+    const cryptoDetailsTopClassName = classNames(
+        "crypto-details__top",
+        {
+            "crypto-details__top-dark": theme === "dark"
+        }
+    )
+
+    const cryptoTitleStyleMainClassName = classNames(
+        "crypto-stats__title--main",
+        {
+            "is--dark": theme === "dark"
+        }
+    )
+
+
     return (
         <section className="crypto-details">
-            <div className="crypto-details__top">
+            <div className={cryptoDetailsTopClassName}>
                 <h1>
                     {coinName} ({coinSymbol}) Price
                 </h1>
@@ -53,17 +78,17 @@ export default function CryptoDetailsPage(): JSX.Element | null {
                 <LineChart />
             </div>
 
-            <StatisticsSection {...mappedData} />
+            <StatisticsSection {...mappedData} statsClassName={statsClassName} />
 
             <div className="crypto-details__info">
                 <div className="crypto-stats__info-container">
-                    <h1 className="crypto-stats__title--main">
+                    <h1 className={cryptoTitleStyleMainClassName}>
                         What is {coinName}?
                     </h1>
                     {parse(description)}
                 </div>
 
-                <LinksSection links={links} coinName={coinName} />
+                <LinksSection links={links} coinName={coinName} statsClassName={statsClassName} cryptoTitleStyleMainClassName={cryptoTitleStyleMainClassName} />
             </div>
         </section>
     );
@@ -82,18 +107,35 @@ function StatisticsSection(props: StatisticsSectionPropTypes) {
         isConfirmed,
         totalSupply,
         circulatingSupply,
+        statsClassName
     } = props;
+
+    const { theme } = useTheme();
+
+    const statsTitleClassName = classNames(
+        "stats__title",
+        {
+            "is--dark": theme === "dark"
+        }
+    )
+
+    const statsDescClassName = classNames(
+        "stats__desc",
+        {
+            "is--dark": theme === "dark"
+        }
+    )
 
     return (
         <div className="crypto-details__stats">
             <div className="crypto-stats">
-                <h1 className="stats__title">{coinName} statistics</h1>
-                <p className="stats__desc">
+                <h1 className={statsTitleClassName}>{coinName} statistics</h1>
+                <p className={statsDescClassName}>
                     An overview showing the statistics of {coinName}, such as
                     the base and quote currency, the rank, and All time high.
                 </p>
                 <Col span={24}>
-                    <div className="stats__card">
+                    <div className={statsClassName}>
                         <h3 className="stats-title">
                             <BorderlessTableOutlined /> Rank
                         </h3>
@@ -101,7 +143,7 @@ function StatisticsSection(props: StatisticsSectionPropTypes) {
                     </div>
                 </Col>
                 <Col span={24}>
-                    <div className="stats__card">
+                    <div className={statsClassName}>
                         <h3 className="stats-title">
                             <DollarOutlined /> Price to USD
                         </h3>
@@ -109,7 +151,7 @@ function StatisticsSection(props: StatisticsSectionPropTypes) {
                     </div>
                 </Col>
                 <Col span={24}>
-                    <div className="stats__card">
+                    <div className={statsClassName}>
                         <h3 className="stats-title">
                             <DollarOutlined /> Market Cap
                         </h3>
@@ -117,7 +159,7 @@ function StatisticsSection(props: StatisticsSectionPropTypes) {
                     </div>
                 </Col>
                 <Col span={24}>
-                    <div className="stats__card">
+                    <div className={statsClassName}>
                         <h3 className="stats-title">
                             <ThunderboltOutlined /> 24h Volume
                         </h3>
@@ -125,7 +167,7 @@ function StatisticsSection(props: StatisticsSectionPropTypes) {
                     </div>
                 </Col>
                 <Col span={24}>
-                    <div className="stats__card">
+                    <div className={statsClassName}>
                         <h3 className="stats-title">
                             <TrophyOutlined /> All time high
                         </h3>
@@ -135,14 +177,14 @@ function StatisticsSection(props: StatisticsSectionPropTypes) {
             </div>
             <div className="crypto-other-stats">
                 <div className="crypto-stats">
-                    <h1 className="stats__title">Other Stats Info</h1>
-                    <p className="stats__desc">
+                    <h1 className={statsTitleClassName}>Other Stats Info</h1>
+                    <p className={statsDescClassName}>
                         An overview showing more statistics of {coinName}, such
                         as the number of exchanges, the total and circulating
                         supply.
                     </p>
                     <Col span={24}>
-                        <div className="stats__card">
+                        <div className={statsClassName}>
                             <h3 className="stats-title">
                                 <MoneyCollectOutlined /> Number Of tickets
                             </h3>
@@ -153,7 +195,7 @@ function StatisticsSection(props: StatisticsSectionPropTypes) {
                     </Col>
                 </div>
                 <Col span={24}>
-                    <div className="stats__card">
+                    <div className={statsClassName}>
                         <h3 className="stats-title">
                             <BankOutlined /> Number Of Exchanges
                         </h3>
@@ -161,7 +203,7 @@ function StatisticsSection(props: StatisticsSectionPropTypes) {
                     </div>
                 </Col>
                 <Col span={24}>
-                    <div className="stats__card">
+                    <div className={statsClassName}>
                         <h3 className="stats-title">
                             <ExclamationCircleOutlined /> Aprroved Supply
                         </h3>
@@ -175,7 +217,7 @@ function StatisticsSection(props: StatisticsSectionPropTypes) {
                     </div>
                 </Col>
                 <Col span={24}>
-                    <div className="stats__card">
+                    <div className={statsClassName}>
                         <h3 className="stats-title">
                             <ExclamationCircleOutlined /> Total Supply
                         </h3>
@@ -183,7 +225,7 @@ function StatisticsSection(props: StatisticsSectionPropTypes) {
                     </div>
                 </Col>
                 <Col span={24}>
-                    <div className="stats__card">
+                    <div className={statsClassName}>
                         <h3 className="stats-title">
                             <ExclamationCircleOutlined /> Circulating Supply
                         </h3>
@@ -195,15 +237,15 @@ function StatisticsSection(props: StatisticsSectionPropTypes) {
     );
 }
 
-function LinksSection(props: { links: CoinLinks[]; coinName: string }) {
-    const { links, coinName } = props;
+function LinksSection(props: { links: CoinLinks[]; coinName: string, statsClassName: string, cryptoTitleStyleMainClassName: string }) {
+    const { links, coinName, statsClassName, cryptoTitleStyleMainClassName } = props;
 
     return (
         <div className="crypto-stats__links-container">
-            <h1 className="crypto-stats__title--main">{coinName} Links</h1>
+            <h1 className={cryptoTitleStyleMainClassName}>{coinName} Links</h1>
             {links.map((link) => (
                 <Col span={24} key={link.name}>
-                    <div className="stats__card">
+                    <div className={statsClassName}>
                         <h3 className="crypto-stats__info-link--title">
                             {link.type}
                         </h3>

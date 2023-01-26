@@ -39,7 +39,6 @@
 .crypto-news {
     padding: 0px 30px;
     margin-top: 10px;
-    margin-bottom: 150px;
 }
 
 .crypto_news-card {
@@ -115,6 +114,10 @@
 
 .stats__card:hover {
     background-color: #fff;
+}
+
+.stats__card.stats__card-dark:hover{
+    background: #476D7C;
 }
 
 .news-info {

@@ -81,4 +81,5 @@ export type StatisticsSectionPropTypes = {
     isConfirmed: boolean,
     totalSupply: string | number,
     circulatingSupply: string | number
+    statsClassName: string;
 }

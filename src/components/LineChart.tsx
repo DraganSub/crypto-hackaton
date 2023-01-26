@@ -14,6 +14,7 @@ import { useParams } from "react-router-dom";
 import { Line } from "react-chartjs-2";
 import { useGetCoinHistoryQuery } from "../services";
 import { Select } from "antd";
+import { useTheme } from "../hooks";
 
 ChartJS.register(
     CategoryScale,
@@ -101,6 +102,7 @@ function LineComponent(props: any) {
         id: cryptoId as string,
         period: props.selectValue,
     });
+    const { theme } = useTheme();
 
     const filterLabels: string[] = [];
     const filterPrice: number[] = [];
@@ -119,8 +121,8 @@ function LineComponent(props: any) {
                 label: "Price ($)",
                 fill: true,
                 data: filterPrice?.reverse(),
-                backgroundColor: "rgba(25, 178, 148, 0.2)",
-                borderColor: "#19b294",
+                backgroundColor: theme === "dark" ? "#476D7C" : "rgba(25, 178, 148, 0.2)",
+                borderColor: theme === "dark" ? "white" : "#19b294",
                 pointRadius: 1,
                 borderWidth: 2,
                 spanGaps: true,

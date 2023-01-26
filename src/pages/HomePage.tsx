@@ -4,14 +4,22 @@ import CryptoList from "../components/CryptoList";
 import NewsList from "../components/NewsList";
 import { Link } from "react-router-dom";
 import "../style/HomePage.css";
+import classNames from "classnames";
+import { useTheme } from "../hooks";
 
 export default function HomePage() {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+    const { theme } = useTheme();
+
+    const homepageClassName = classNames(
+        "homepage bottom_margin_150", {
+        "main--is-dark": theme === "dark"
+    })
 
     return (
-        <div className="homepage">
+        <div className={homepageClassName}>
             <section className="hero_section">
                 <h2 className="hero-title">Global Crypto Stats</h2>
                 <CoinStats />

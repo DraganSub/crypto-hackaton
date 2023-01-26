@@ -2,10 +2,10 @@ import { Card } from "antd";
 import { useGetNewsQuery } from "../services";
 import { news } from "../types";
 import { dateFormatter } from "../utility";
-import { Skeleton } from "antd";
 import classNames from "classnames";
 import { NewsSkeletonLoader } from ".";
 import ErrorComponent from "./ErrorComponent";
+import { useTheme } from "../hooks";
 
 export default function NewsList({
     theme,
@@ -31,21 +31,22 @@ export default function NewsList({
     );
 }
 
-
-
 const NewsCard = (props: news) => {
     const { name, image, url, description, datePublished, provider } = props;
     const formattedDate = dateFormatter(datePublished);
-
+    const { theme } = useTheme();
     const noImgClassName = classNames(
         "",
         {
             "no__img-wrap": image?.thumbnail.contentUrl == null
         }
     )
+    const cryptoCardClass = classNames("crypto_news-card", {
+        "card-is--dark": theme === "dark"
+    })
     return (
-        <a href={url} target="_blank" >
-            <Card className="crypto_news-card">
+        <a href={url} target="_blank" rel="noreferrer">
+            <Card className={cryptoCardClass}>
                 <div className="crypto__card__title">
                     <h5>{name}</h5>
                     <div className={noImgClassName}>

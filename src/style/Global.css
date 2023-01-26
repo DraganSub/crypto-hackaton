@@ -1,3 +1,5 @@
+@import url("./ThemeSwitcher.css");
+
 :root {
     --main-sidebar-color: #fff;
     --sidemenu-active-color: rgb(0, 165, 154);
@@ -13,7 +15,34 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     min-height: 100vh;
+    padding: 0;
+    margin: 0;
+    overflow: overlay
+
 }
+
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: #00a59a #ffffff;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 13px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: none
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #00a59a;
+    border-radius: 7px;
+    border: 1px solid white;
+  }
+
 
 .sidebar {
     position: fixed;
@@ -82,8 +111,10 @@ body {
 .main-footer {
     position: absolute;
     bottom: 0;
-    width: 100%;
+    width: fit-content;
     margin-top: 50px;
+    transform: translate(-50%,0%);
+    left: 50%;
 }
 
 .footer-credits {
@@ -190,16 +221,26 @@ body {
 }
 
 @media screen and (max-width: 800px) {
+  
     .crypto__news--titles-group {
         text-align: center;
         margin: 0;
     }
-
+    .ant{
+        position: relative;
+    }
+    .theme--switcher{
+        position: absolute;
+        top: 22px;
+        right: calc(20px + 21px + 40px);
+        z-index: 9999;
+    }
     .sidebar {
         display: flex;
+        justify-content: space-evenly;
         height: fit-content;
+        width: 100%;
         padding-bottom: 20px;
-        justify-items: center;
         z-index: 1000;
         margin: 0px;
         width: 100%;
@@ -273,6 +314,26 @@ body {
         width: 150px;
     }
 }
+
+@media screen and (max-width: 650px) {
+    .theme--switcher{
+        
+        right: calc(20px + 21px + 10px);
+    }
+}
+
+@media screen and (max-width: 370px) {
+    .theme--switcher{ 
+        display: none;
+    }
+    .crypto-currency{
+      padding: 0;
+    }
+    .crypto__title-group{
+        padding: 0;
+    }
+}
+
 
 @media screen and (min-width: 1500px) {
     .sidebar {

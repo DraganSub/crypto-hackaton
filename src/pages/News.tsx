@@ -2,10 +2,13 @@ import { useState, useEffect } from "react";
 import { Select } from "antd";
 import { NewsList } from "../components";
 import { coins } from "../utility";
+import classNames from "classnames";
+import { useTheme } from "../hooks";
 
 export default function News() {
     const [searcInputValue, setSearchInputValue] = useState<string>("");
     const [searchTerm, setSearchTerm] = useState<string>("");
+    const { theme } = useTheme();
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [])
@@ -18,12 +21,19 @@ export default function News() {
         setSearchTerm(value || searcInputValue);
     };
 
+    const searchFieldClassName = classNames(
+        "crypto__search-field",
+        {
+            "search__field--dark": theme === "dark"
+        }
+    )
+
+
     return (
-        <section className="crypto-news">
+        <section className="crypto-news bottom_margin_150">
             <div className="crypto__title-group">
                 <Select
-                    className="crypto__search-field"
-                    showSearch
+                    className={searchFieldClassName}
                     placeholder="Enter your crypto here..."
                     optionFilterProp="children"
                     onChange={onChange}
