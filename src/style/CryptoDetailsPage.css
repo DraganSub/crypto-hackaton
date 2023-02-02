@@ -1,0 +1,111 @@
+.crypto-details__top {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    line-height: 1;
+}
+.crypto-details__top > h1 {
+    font-size: 32px;
+    color: var(--secondary-font-color);
+    margin: 40px 0px 20px 0px;
+}
+
+.crypto-details__top > p {
+    font-size: 18px;
+    color: var(--label-secondary-font-color);
+}
+
+.crypto-details__chart {
+    position: relative;
+    height: max-content;
+    padding: 40px;
+}
+
+.chart__select-field {
+    width: 200px;
+    padding: 5px;
+    border: 1px solid rgb(223, 217, 217);
+}
+
+.crypto-details__stats {
+    display: flex;
+    gap: 20px;
+    padding: 20px 0px;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.crypto-details__info {
+    display: flex;
+    gap: 20px;
+    padding: 20px 0px;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 150px;
+}
+
+.crypto-stats__info-container {
+    max-width: 35vw;
+    width: 100%;
+}
+.crypto-stats__links-container {
+    max-width: 35vw;
+    width: 100%;
+}
+
+.crypto-stats__info-text {
+    line-height: 1.5;
+    font-size: 16px;
+}
+
+.crypto-stats__title--main {
+    font-size: 24px;
+    color: var(--secondary-font-color);
+    margin: 0;
+}
+
+.crypto-stats__info-link {
+    color: #00a59a;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.crypto-stats__info-link--title {
+    text-transform: capitalize;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 7px;
+    letter-spacing: 0.6px;
+}
+
+.crypto-stats {
+    max-width: 35vw;
+}
+.stats__title {
+    font-size: 24px;
+    color: var(--secondary-font-color);
+    margin: 0;
+}
+.stats__desc {
+    font-size: 18px;
+    color: var(--label-secondary-font-color);
+}
+
+.stats__card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgb(211, 207, 207);
+    line-height: 2;
+}
+
+.stats-title {
+    font-weight: 300;
+}
+.stats-value {
+    font-weight: 600;
+}

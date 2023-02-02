@@ -1,0 +1,60 @@
+/****************** ****************************/
+.is--dark ,
+.crypto-details__top.crypto-details__top-dark > h1,
+.crypto-details__top.crypto-details__top-dark > p,
+.hero_info_container.is--dark > div > div
+{
+   color: #b7e7f3;
+}
+
+.is--light{
+   color: black;
+}
+
+.flex{
+   display: flex;
+} 
+.no-border .ant-card-head {
+   border: none;
+}
+
+.card-is--dark{
+   background: #254B62;
+   border: none;
+   color: #b7e7f3;
+}
+
+.sidebar.is-dark{
+   background: #254B62;
+}
+
+.ant-menu-item.ant-menu-item-selected.sidemenu-item__is--dark {
+ background-color: #476D7C;
+}
+
+.theme--switcher{
+   position: absolute;
+   padding: 10px;
+   top: 0;
+   right: 10px;
+   z-index: 100;
+}
+
+.ant-menu-item.sidemenu-item__is--dark > span, 
+.ant-menu-item.sidemenu-item__is--dark > span >svg,
+.is--white{
+   color: white;
+}
+
+.main--is-dark{
+   background:#1D3E53 ;
+   margin-top:0 ;
+   min-height: 100vh;
+
+}
+
+.footer--is-dark > div > a {
+   color: #b7e7f3;
+}
+
+/****************** ****************************/
